@@ -1,0 +1,20 @@
+class Solution:
+    def checkValidString(self, s: str) -> bool:
+        lmin, lmax = 0, 0
+        for c in s:
+            if c == "(":
+                lmin += 1
+                lmax += 1
+
+            elif c == ")":
+                lmin -= 1
+                lmax -= 1
+            else:
+                lmin -= 1
+                lmax += 1
+            if lmin  > lmax:
+                return False
+            if lmin < 0:
+                lmin = 0
+
+        return lmin == 0
